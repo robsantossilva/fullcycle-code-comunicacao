@@ -1,0 +1,59 @@
+[2021-09-01 16:16:17.460] [remoteagent] [info] 
+
+*
+* Visual Studio Code Server
+*
+* Reminder: You may only use this software with Visual Studio family products,
+* as described in the license https://aka.ms/vscode-remote/license
+*
+
+
+[2021-09-01 16:16:17.460] [remoteagent] [info] Extension host agent started.
+[2021-09-01 16:16:17.460] [remoteagent] [error] getUnixShellEnvironment#error Failed to get environment (code 1, signal null)
+[2021-09-01 16:16:17.500] [remoteagent] [info] [::ffff:127.0.0.1][70f8f872][ManagementConnection] New connection established.
+[2021-09-01 16:16:17.896] [remoteagent] [info] [::ffff:127.0.0.1][13379950][ExtensionHostConnection] New connection established.
+[2021-09-01 16:16:17.902] [remoteagent] [info] [::ffff:127.0.0.1][13379950][ExtensionHostConnection] <243> Launched Extension Host Process.
+[2021-09-01 16:16:19.312] [remoteagent] [info] Installing extension: esbenp.prettier-vscode
+[2021-09-01 16:16:19.319] [remoteagent] [info] Installing extension: naumovs.color-highlight
+[2021-09-01 16:16:19.391] [remoteagent] [info] Installing extension: ms-vscode.vscode-typescript-tslint-plugin
+[2021-09-01 16:16:19.426] [remoteagent] [info] Installing extension: visualstudioexptteam.vscodeintellicode
+[2021-09-01 16:16:19.508] [remoteagent] [info] Downloaded extension: esbenp.prettier-vscode /var/www/.vscode-server/extensionsCache/esbenp.prettier-vscode-8.1.0
+[2021-09-01 16:16:19.529] [remoteagent] [info] Downloaded extension: naumovs.color-highlight /var/www/.vscode-server/extensionsCache/naumovs.color-highlight-2.4.0
+[2021-09-01 16:16:19.601] [remoteagent] [info] Downloaded extension: ms-vscode.vscode-typescript-tslint-plugin /var/www/.vscode-server/extensionsCache/ms-vscode.vscode-typescript-tslint-plugin-1.3.3
+[2021-09-01 16:16:19.611] [remoteagent] [info] Downloaded extension: visualstudioexptteam.vscodeintellicode /var/www/.vscode-server/extensionsCache/visualstudioexptteam.vscodeintellicode-1.2.14
+[2021-09-01 16:16:19.755] [remoteagent] [info] Installing extension: ms-azuretools.vscode-docker
+[2021-09-01 16:16:19.787] [remoteagent] [info] Installing extension: dbaeumer.vscode-eslint
+[2021-09-01 16:16:19.891] [remoteagent] [info] Downloaded extension: dbaeumer.vscode-eslint /var/www/.vscode-server/extensionsCache/dbaeumer.vscode-eslint-2.1.23
+[2021-09-01 16:16:19.984] [remoteagent] [info] Installing extension: streetsidesoftware.code-spell-checker
+[2021-09-01 16:16:19.990] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.fcc7c5a8-09d1-443a-b9c5-c8d7ea54b26a: dbaeumer.vscode-eslint
+[2021-09-01 16:16:20.026] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/dbaeumer.vscode-eslint-2.1.23
+[2021-09-01 16:16:20.035] [remoteagent] [info] Extracting completed. dbaeumer.vscode-eslint
+[2021-09-01 16:16:20.068] [remoteagent] [info] Extension installed successfully: dbaeumer.vscode-eslint
+[2021-09-01 16:16:20.159] [remoteagent] [info] Downloaded extension: streetsidesoftware.code-spell-checker /var/www/.vscode-server/extensionsCache/streetsidesoftware.code-spell-checker-2.0.2
+[2021-09-01 16:16:20.236] [remoteagent] [info] Downloaded extension: ms-azuretools.vscode-docker /var/www/.vscode-server/extensionsCache/ms-azuretools.vscode-docker-1.16.0
+[2021-09-01 16:16:20.548] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.24b47586-e873-402d-bdc2-829795264ce7: ms-vscode.vscode-typescript-tslint-plugin
+[2021-09-01 16:16:20.564] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/ms-vscode.vscode-typescript-tslint-plugin-1.3.3
+[2021-09-01 16:16:20.566] [remoteagent] [info] Extracting completed. ms-vscode.vscode-typescript-tslint-plugin
+[2021-09-01 16:16:20.575] [remoteagent] [info] Extension installed successfully: ms-vscode.vscode-typescript-tslint-plugin
+[2021-09-01 16:16:20.680] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.583d6b88-1fb6-4aed-824f-f94c57efda65: ms-azuretools.vscode-docker
+[2021-09-01 16:16:20.693] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/ms-azuretools.vscode-docker-1.16.0
+[2021-09-01 16:16:20.696] [remoteagent] [info] Extracting completed. ms-azuretools.vscode-docker
+[2021-09-01 16:16:20.703] [remoteagent] [info] Extension installed successfully: ms-azuretools.vscode-docker
+[2021-09-01 16:16:20.762] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.674cf09e-1345-47e7-b87b-763a7be50b73: esbenp.prettier-vscode
+[2021-09-01 16:16:20.774] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/esbenp.prettier-vscode-8.1.0
+[2021-09-01 16:16:20.776] [remoteagent] [info] Extracting completed. esbenp.prettier-vscode
+[2021-09-01 16:16:20.785] [remoteagent] [info] Extension installed successfully: esbenp.prettier-vscode
+[2021-09-01 16:16:20.870] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.2ff7c01f-7b6d-4478-a6a2-2ef28427e5ef: naumovs.color-highlight
+[2021-09-01 16:16:20.881] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/naumovs.color-highlight-2.4.0
+[2021-09-01 16:16:20.882] [remoteagent] [info] Extracting completed. naumovs.color-highlight
+[2021-09-01 16:16:20.901] [remoteagent] [info] Extension installed successfully: naumovs.color-highlight
+[2021-09-01 16:16:21.081] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.161b04fc-47cf-46a9-8a94-879b54fc9ccd: streetsidesoftware.code-spell-checker
+[2021-09-01 16:16:21.094] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/streetsidesoftware.code-spell-checker-2.0.2
+[2021-09-01 16:16:21.098] [remoteagent] [info] Extracting completed. streetsidesoftware.code-spell-checker
+[2021-09-01 16:16:21.107] [remoteagent] [info] Extension installed successfully: streetsidesoftware.code-spell-checker
+[2021-09-01 16:16:21.205] [remoteagent] [info] Extracted extension to /var/www/.vscode-server/extensions/.021df9db-0580-484a-8a3c-b7710312a733: visualstudioexptteam.vscodeintellicode
+[2021-09-01 16:16:21.217] [remoteagent] [info] Renamed to /var/www/.vscode-server/extensions/visualstudioexptteam.vscodeintellicode-1.2.14
+[2021-09-01 16:16:21.218] [remoteagent] [info] Extracting completed. visualstudioexptteam.vscodeintellicode
+[2021-09-01 16:16:21.223] [remoteagent] [info] Extension installed successfully: visualstudioexptteam.vscodeintellicode
+[2021-09-01 16:18:04.054] [remoteagent] [info] [::ffff:127.0.0.1][70f8f872][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+[2021-09-01 16:18:05.109] [remoteagent] [info] [::ffff:127.0.0.1][13379950][ExtensionHostConnection] <243> Extension Host Process exited with code: 0, signal: null.

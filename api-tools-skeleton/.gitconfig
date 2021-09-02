@@ -1,0 +1,5 @@
+[user]
+	email = robsantossilva@gmail.com
+	name = Robson Silva
+[credential]
+	helper = "!f() { /var/www/.vscode-server/bin/3866c3553be8b268c8a7f8c0482c0c0177aa8bfa/node /tmp/vscode-remote-containers-e4137bc4367476bdbe05829315c0bf4b4470289c.js $*; }; f"
