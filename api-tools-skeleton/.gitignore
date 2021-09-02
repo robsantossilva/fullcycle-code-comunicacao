@@ -11,3 +11,4 @@ data/cache/*
 .history/
 .composer/
 .bash_history
+.vscode-server
