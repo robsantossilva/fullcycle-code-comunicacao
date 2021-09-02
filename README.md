@@ -138,3 +138,87 @@ Caso o servidor não aceite o content type, ele poderá retornar:
 ``` json
 HTTP/1.1 415 Unsupported Mediaw Type
 ```
+
+### gRPC
+- É um framework desenvolvido pela google que tem o objetivo de facilitar o processo de comunicação entre sistemas de uma forma extremamente rápida, leve, independente de limguagem.
+- Faz parte da CNCF (Cloud Native Computation Foundation)
+
+##### Em quais casos podemos utilizar?
+- Ideal para microsserviços
+- Mobile, Browser e Backend
+- Geração das bibliotecas de forma automática
+- Streaming didirecional utilizando HTTP/2
+  
+##### Linguagens (Suporte oficial)
+- GO
+- JAVA
+- C
+    - C++
+    - Python
+    - Ruby
+    - Objective C
+    - PHP
+    - C#
+    - NodeJS
+    - Dart
+    - Kotlin/JVM
+
+##### RPC - Remote Procedure Call
+![](./.github/rpc-1.png)
+
+##### Protocol Buffers
+"Protocol buffers are Google's language-neutral, extensible mechanism for serializing structured data - think XML, but smaller, faster, and simplier."
+
+##### Protocol vs JSON
+- Arquivos binários < JSON
+- Processo de serialização é mais leve (CPU) do que JSON
+- Gasta menos recursos de rede
+- Processo é mais veloz
+
+Protocol Buffers
+``` bash
+syntax = "proto3";
+
+message SearchRequest {
+    string query = 1;
+    int32 page_number = 2;
+    int32 result_per_page = 3;
+}
+
+```
+
+### HTTP/2
+- Nome original criado pelo Google era SPDY
+- Lançado em 2015
+- Dados trafegados são binários e não texto como no HTTP 1.1
+- Utiliza a mesma conexão TCP para enviar e receber dados do cliente e do servidor (Multiplex)
+- Server Push
+- Headers são comprimidos
+- Gasta menos recurso de rede
+- Processo é mais veloz
+
+### gRPC - API "unary"
+![](./.github/grpc-api-unary.png)
+
+### gRPC - API "Server streaming"
+![](./.github/grpc-api-server-streaming.png)
+
+### gRPC - API "Client streaming"
+![](./.github/grcp-api-client-streaming.png)
+
+### gRPC - API "Bi directional streaming"
+![](./.github/grcp-api-bi-directional-streaming.png)
+
+### REST vc gRPC
+JSON|gRPC
+---|---
+Texto/JSON | Protocol Buffers
+Unidirecional | Bidirecional e Assíncrono
+Alta latência | Baixa latência
+Sem contrato (maior chance de erros) | Contrato definido (.proto)
+Sem suporte a streaming (Request/Response) | Suporte a streaming
+Design pré-definido | Design é livre
+Bibliotecas de terceiros | Geração de código
+
+
+
