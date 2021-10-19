@@ -139,7 +139,7 @@ Caso o servidor não aceite o content type, ele poderá retornar:
 HTTP/1.1 415 Unsupported Mediaw Type
 ```
 
-### gRPC
+## gRPC
 - É um framework desenvolvido pela google que tem o objetivo de facilitar o processo de comunicação entre sistemas de uma forma extremamente rápida, leve, independente de limguagem.
 - Faz parte da CNCF (Cloud Native Computation Foundation)
 
@@ -220,5 +220,171 @@ Sem suporte a streaming (Request/Response) | Suporte a streaming
 Design pré-definido | Design é livre
 Bibliotecas de terceiros | Geração de código
 
+[grpc.io](https://grpc.io/)
+[developers.google.com/protocol-buffers](https://developers.google.com/protocol-buffers)
+
+### Instalação das ferramentas gRPC
+Olá pessoal!
+
+Para usar as ferramentas que trabalharemos na aula seguinte para compilar os protofiles será necessário instalar alguns pacotes.
+
+Hoje podemos unificar a instalação dos pacotes nos sistemas operacional, porque no Windows existe o WSL (Windows Subsystem for Linux). Se você ainda não configurou este ambiente no seu Windows, vá no módulo de Docker e veja o primeiro capítulo.
+
+Execute estes comandos no seu terminal Linux/MAC:
+
+``` bash
+sudo apt install protobuf-compiler 
+brew install protobuf #Mac, requer Homebrew instalado
+```
+
+``` bash
+go get google.golang.org/protobuf/cmd/protoc-gen-go google.golang.org/grpc/cmd/protoc-gen-go-grpc
+```
+
+Para finalizar, temos que adicionar a pasta "/go/bin" no PATH do Linux para que tudo que seja instalado nesta pasta esteja disponível como comandos no terminal. Adicione no final do seu ~/.bash
+
+``` bash
+PATH="/go/bin:$PATH"
+```
+
+Execute o comando abaixo para atualizar seu terminal:
+``` bash
+source ~/.bashrc
+```
+
+Pronto, todos os executáveis usados na aula anterior já estão disponíveis no seu terminal.
+
+É isso aí pessoal, até a próxima.
+
+### Criando protofile e stubs
+[./grpc/proto/user.proto](./grpc/proto/user.proto)
+``` bash
+protoc --proto_path=proto proto/*.proto --go_out=pb
+
+protoc --proto_path=proto proto/*.proto --go_out=pb --go-grpc_out=pb
+```
+
+Rodando servidor GRPC
+``` bash
+go run cmd/server/server.go
+```
+
+Client GRPC
+https://github.com/ktr0731/evans
+``` bash
+evans -r repl --host localhost --port 50051
+```
+
+## GraphQL
+
+**Problema**: Client Desktop e Client Mobile não consomem a informação, fornecida pelo Sever, do mesmo jeito.
+
+**Solução**: E se tivéssemos uma forma de que o client tivesse total autonomia para escolher quais dados ele gostaria de receber?
+
+"GraphQL é uma linguagem de consulta para APIs e um tuntime para atender a essas consultas com seus dados existentes. GraphQL fornece uma descrição completa e compreensível dos dados em sua API, dá aos clientes o poder de pedir exatamente o que eles precisam e nada mais, torna mais fácil evoluir APIs ao longo do tempo e permite poderosas ferramentas para desenvolvedores." (https://graphql.org)
+
+#### Grandes vantagens
+- Único endpiint
+- Única request
+- Server apresenta os recursos disponíveis
+- Client solicita somente a informação necessária
+- Há possibilidade de realizar alterações / inserções nos dados através de "mutations"
+- Trabalha utilizando HTTP
+- Retorna json como response
+
+#### Dinâmica
+![](./.github/graphql-dinamica.png)
+
+#### Schema
+- GraphQL Schema Language
+- Data Types
+- Query
+- Mutations
+- Subscriptions
+
+#### Exemplo
+![](./.github/graphql-exemplo.png)
+
+#### Funcionamento
+- Queries realizam consultas e trazem os dados de acordo com a solicitação. Executadas em paralelo.
+- Mutation realiza processo de create, update e delete. É executada em série. Ex:
+
+Mutation
+``` graphql
+mutation createCategory {
+    createCategory(input: {name:"PHP", description: "PHP is awsome"}) {
+        id
+        name
+        description
+    }
+}
+```
+
+Query
+``` graphql
+query findCategories {
+    categories {
+        id
+            name
+            description
+            courses {
+                name
+            }
+    }
+}
+```
+
+#### Criando Schema
+https://github.com/99designs/gqlgen
 
 
+## Service Discovery e Consul
+
+#### Cenário comum em aplicações distribuídas
+
+Cenário 1
+![](./.github/service-discovery-1.png)
+
+Cenário 2
+![](./.github/service-discovery-2.png)
+
+- Qual máquina chamar?
+- Qual porta utilizar?
+- Preciso saber o IP de cada instância?
+- Como ter certeza se aquela instância está saudável?
+- Como saber se tenho permissão para acessar
+
+#### Service Discovery
+- Descobre as máquinas disponíveis para acesso
+- Segmentação de máquina para garantir segurança
+- Resoluções via DNS
+- Health check
+- Como saber se tenho permissão para acessar
+
+#### Hashcorp Consul
+- Service Discovery
+- Service Segmentation
+- Load Balancer na Borda (Layer 7)
+- Key/Value Configuration
+- Opensource/Enterprise
+
+#### Consul & Service Registry Centralizado
+![](./.github/consul-1.png)
+
+#### Health Check Ativo
+![](./.github/consul-2.png)
+
+#### Multi-região & Multi-cloud
+![](./.github/consul-3.png)
+
+#### Agent, Client e Server
+- Agent: Processo que fica sendo executado em todos nós do cluster. Pode estar sendo executado em Client Mode ou Server Mode.
+- Client: Registra os serviços localmente, Health check, encaminha as informações e configurações dos swerviços para o Server
+- Server: Mantém o estado do cluster, registra os serviços, Membership (quem é client e quem é server), retorno de queries (DNS ou API), troca de informações entre datacenters, etc
+
+#### Dev Mode
+- Nunca utilize em produção
+- Teste de featues, exemplos
+- Roda como servidor
+- Não escala
+- Registra tudo em memória
