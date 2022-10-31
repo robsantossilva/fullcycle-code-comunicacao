@@ -7,8 +7,8 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"github.com/robsantossilva/3-fullcycle-code-comunicacao/graph"
-	"github.com/robsantossilva/3-fullcycle-code-comunicacao/graph/generated"
+	"github.com/robsantossilva/fc2-graphql/graph"
+	"github.com/robsantossilva/fc2-graphql/graph/generated"
 )
 
 const defaultPort = "8080"
