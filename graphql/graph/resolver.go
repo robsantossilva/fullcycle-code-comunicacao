@@ -8,4 +8,5 @@ import "github.com/robsantossilva/3-fullcycle-code-comunicacao/internal/database
 
 type Resolver struct {
 	CategoryDB *database.Category
+	CourseDB   *database.Course
 }

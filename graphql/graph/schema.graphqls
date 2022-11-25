@@ -9,7 +9,7 @@ type Course {
   id: ID!
   name: String!
   description: String
-  courses: Category!
+  category: Category!
 }
 
 input NewCategory {

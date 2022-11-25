@@ -5,3 +5,11 @@ CREATE TABLE categories
   name string,
   description string
 );
+
+CREATE TABLE courses
+(
+  id string,
+  name string,
+  description string,
+  category_id string
+);
