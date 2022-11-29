@@ -19,21 +19,21 @@
 
 **Nível 1:** Utilização de resources
 
-Verbo | URI | Operação
-------|-----|---------
-GET|/products/1|Buscar
-POST|/products|Inserir
-PUT|/products/1|Alterar
-DELETE|/products/1|Remover
+| Verbo  | URI         | Operação |
+| ------ | ----------- | -------- |
+| GET    | /products/1 | Buscar   |
+| POST   | /products   | Inserir  |
+| PUT    | /products/1 | Alterar  |
+| DELETE | /products/1 | Remover  |
 
 **Nível 2:** Utilização de Verbos HTTP mediante a sua representatividade
 
-Verbo | Utilização
-------|------------
-GET|Recuperar informação
-POST|Inserir
-PUT|Alterar
-DELETE|Remover
+| Verbo  | Utilização           |
+| ------ | -------------------- |
+| GET    | Recuperar informação |
+| POST   | Inserir              |
+| PUT    | Alterar              |
+| DELETE | Remover              |
 
 **Nível 3:** HATEOAS: Hypermedia as the Engine of Application State
 
@@ -210,15 +210,15 @@ message SearchRequest {
 ![](./.github/grcp-api-bi-directional-streaming.png)
 
 ### REST vc gRPC
-JSON|gRPC
----|---
-Texto/JSON | Protocol Buffers
-Unidirecional | Bidirecional e Assíncrono
-Alta latência | Baixa latência
-Sem contrato (maior chance de erros) | Contrato definido (.proto)
-Sem suporte a streaming (Request/Response) | Suporte a streaming
-Design pré-definido | Design é livre
-Bibliotecas de terceiros | Geração de código
+| JSON                                       | gRPC                       |
+| ------------------------------------------ | -------------------------- |
+| Texto/JSON                                 | Protocol Buffers           |
+| Unidirecional                              | Bidirecional e Assíncrono  |
+| Alta latência                              | Baixa latência             |
+| Sem contrato (maior chance de erros)       | Contrato definido (.proto) |
+| Sem suporte a streaming (Request/Response) | Suporte a streaming        |
+| Design pré-definido                        | Design é livre             |
+| Bibliotecas de terceiros                   | Geração de código          |
 
 [grpc.io](https://grpc.io/)
 [developers.google.com/protocol-buffers](https://developers.google.com/protocol-buffers)
@@ -281,10 +281,10 @@ evans -r repl --host localhost --port 50051
 
 **Solução**: E se tivéssemos uma forma de que o client tivesse total autonomia para escolher quais dados ele gostaria de receber?
 
-"GraphQL é uma linguagem de consulta para APIs e um tuntime para atender a essas consultas com seus dados existentes. GraphQL fornece uma descrição completa e compreensível dos dados em sua API, dá aos clientes o poder de pedir exatamente o que eles precisam e nada mais, torna mais fácil evoluir APIs ao longo do tempo e permite poderosas ferramentas para desenvolvedores." (https://graphql.org)
+"GraphQL é uma linguagem de consulta para APIs e um runtime para atender a essas consultas com seus dados existentes. GraphQL fornece uma descrição completa e compreensível dos dados em sua API, dá aos clientes o poder de pedir exatamente o que eles precisam e nada mais, torna mais fácil evoluir APIs ao longo do tempo e permite poderosas ferramentas para desenvolvedores." (https://graphql.org)
 
 #### Grandes vantagens
-- Único endpiint
+- Único endpoint
 - Única request
 - Server apresenta os recursos disponíveis
 - Client solicita somente a informação necessária

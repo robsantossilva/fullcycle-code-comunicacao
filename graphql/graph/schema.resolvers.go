@@ -5,99 +5,100 @@ package graph
 
 import (
 	"context"
-	"fmt"
-	"math/rand"
 
-	"github.com/robsantossilva/fc2-graphql/graph/generated"
-	"github.com/robsantossilva/fc2-graphql/graph/model"
+	"github.com/robsantossilva/3-fullcycle-code-comunicacao/graph/generated"
+	"github.com/robsantossilva/3-fullcycle-code-comunicacao/graph/model"
 )
 
+// Courses is the resolver for the courses field.
 func (r *categoryResolver) Courses(ctx context.Context, obj *model.Category) ([]*model.Course, error) {
-	var courses []*model.Course
-
-	for _, v := range r.Resolver.Courses {
-		if v.Category.ID == obj.ID {
-			courses = append(courses, v)
-		}
+	courses, err := r.CourseDB.FindByCategoryID(obj.ID)
+	if err != nil {
+		return nil, err
 	}
-
-	return courses, nil
+	var coursesModel []*model.Course
+	for _, course := range courses {
+		coursesModel = append(coursesModel, &model.Course{
+			ID:          course.ID,
+			Name:        course.Name,
+			Description: &course.Description,
+		})
+	}
+	return coursesModel, nil
 }
 
-func (r *courseResolver) Chapters(ctx context.Context, obj *model.Course) ([]*model.Chapter, error) {
-	var chapters []*model.Chapter
-
-	for _, v := range r.Resolver.Chapters {
-		if v.Course.ID == obj.ID {
-			chapters = append(chapters, v)
-		}
+// Category is the resolver for the category field.
+func (r *courseResolver) Category(ctx context.Context, obj *model.Course) (*model.Category, error) {
+	category, err := r.CategoryDB.FindByCourseID(obj.ID)
+	if err != nil {
+		return nil, err
 	}
-
-	return chapters, nil
+	return &model.Category{
+		ID:          category.ID,
+		Name:        category.Name,
+		Description: &category.Description,
+	}, nil
 }
 
-func (r *mutationResolver) CreateCategory(ctx context.Context, input model.NewCategory) (*model.Category, error) {
-	category := &model.Category{
-		ID:          fmt.Sprintf("T%d", rand.Int()),
-		Name:        input.Name,
-		Description: &input.Description,
+// CreateCategory is the resolver for the createCategory field.
+func (r *mutationResolver) CreateCategory(ctx context.Context, input *model.NewCategory) (*model.Category, error) {
+	category, err := r.CategoryDB.Create(input.Name, *input.Description)
+	if err != nil {
+		return nil, err
 	}
-	r.Categories = append(r.Categories, category)
 
-	return category, nil
+	return &model.Category{
+		ID:          category.ID,
+		Name:        category.Name,
+		Description: &category.Description,
+	}, nil
 }
 
-func (r *mutationResolver) CreateCourse(ctx context.Context, input model.NewCourse) (*model.Course, error) {
-	var category *model.Category
-
-	for _, v := range r.Categories {
-		if v.ID == input.CategoryID {
-			category = v
-		}
+// CreateCourse is the resolver for the createCourse field.
+func (r *mutationResolver) CreateCourse(ctx context.Context, input *model.NewCourse) (*model.Course, error) {
+	course, err := r.CourseDB.Create(input.Name, *input.Description, input.CategoryID)
+	if err != nil {
+		return nil, err
 	}
-
-	course := &model.Course{
-		ID:          fmt.Sprintf("T%d", rand.Int()),
-		Name:        input.Name,
-		Description: &input.Description,
-		Category:    category,
-	}
-
-	r.Courses = append(r.Courses, course)
-
-	return course, nil
+	return &model.Course{
+		ID:          course.ID,
+		Name:        course.Name,
+		Description: &course.Description,
+	}, nil
 }
 
-func (r *mutationResolver) CreateChapter(ctx context.Context, input model.NewChapter) (*model.Chapter, error) {
-	var course *model.Course
-
-	for _, v := range r.Courses {
-		if v.ID == input.CourseID {
-			course = v
-		}
-	}
-
-	chapter := &model.Chapter{
-		ID:     fmt.Sprintf("T%d", rand.Int()),
-		Name:   input.Name,
-		Course: course,
-	}
-
-	r.Chapters = append(r.Chapters, chapter)
-
-	return chapter, nil
-}
-
+// Categories is the resolver for the categories field.
 func (r *queryResolver) Categories(ctx context.Context) ([]*model.Category, error) {
-	return r.Resolver.Categories, nil
+	categories, err := r.CategoryDB.FindAll()
+	if err != nil {
+		return nil, err
+	}
+	var categoriesModel []*model.Category
+	for _, category := range categories {
+		categoriesModel = append(categoriesModel, &model.Category{
+			ID:          category.ID,
+			Name:        category.Name,
+			Description: &category.Description,
+		})
+	}
+	return categoriesModel, nil
 }
 
-func (r *queryResolver) Course(ctx context.Context) ([]*model.Course, error) {
-	return r.Resolver.Courses, nil
-}
-
-func (r *queryResolver) Chapters(ctx context.Context) ([]*model.Chapter, error) {
-	return r.Resolver.Chapters, nil
+// Courses is the resolver for the courses field.
+func (r *queryResolver) Courses(ctx context.Context) ([]*model.Course, error) {
+	courses, err := r.CourseDB.FindAll()
+	if err != nil {
+		return nil, err
+	}
+	var coursesModel []*model.Course
+	for _, course := range courses {
+		coursesModel = append(coursesModel, &model.Course{
+			ID:          course.ID,
+			Name:        course.Name,
+			Description: &course.Description,
+		})
+	}
+	return coursesModel, nil
 }
 
 // Category returns generated.CategoryResolver implementation.
